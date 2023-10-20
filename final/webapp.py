@@ -75,9 +75,13 @@ def userinfo():
                        (gender, username, email))
         conn.commit()
         conn.close()
-        return redirect(url_for('user_dashboard'))
+        return redirect(url_for('Ebg'))
 
     return render_template('userinfo.html')
+
+@app.route("/Ebg", methods=['GET', 'POST'])
+def Ebg():
+    return render_template('Ebg.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
