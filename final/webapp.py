@@ -83,5 +83,28 @@ def userinfo():
 def Ebg():
     return render_template('Ebg.html')
 
+@app.route('/ebg', methods=['GET', 'POST'])
+def ebg():
+    if request.method == 'POST':
+        # Handle educational background form submission and insert into the database
+        conn = connect_to_database()
+        cursor = conn.cursor()
+
+        level = request.form['level']
+        qualification = request.form['qualification']
+        field = request.form['field']
+        
+        # Get the user's email from the session (you should have stored it during signup)
+        email = session.get('email')
+
+        # Insert the educational background data into the database
+        cursor.execute("INSERT INTO educationalbackground (email, level, qualification, field) VALUES (%s, %s, %s, %s)",
+                       (email, level, qualification, field))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('user_dashboard'))
+
+    return render_template('ebg.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
