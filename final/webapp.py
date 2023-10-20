@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import psycopg2
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 # Database configuration
 DB_HOST = "intern2301-06-bridging-career-gaps-a.ctgb19tevqci.eu-west-1.rds.amazonaws.com"
@@ -22,6 +22,10 @@ def connect_to_database():
         user=DB_USER,
         password=DB_PASSWORD
     )
+# Add this route to your Flask application
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 # Signup route
 @app.route('/signup', methods=['GET', 'POST'])
@@ -47,14 +51,12 @@ def signup():
                            (email, password))
             conn.commit()
             conn.close()
-            # Redirect to 'userinfo'
-            session['email'] = email
+            # Redirect to a valid route, e.g., 'userinfo'
+            session['email'] = email  
             return redirect(url_for('userinfo'))
 
     return render_template('signup.html')
 
-# Define a route for 'userinfo'
-# User information route
 @app.route('/userinfo', methods=['GET', 'POST'])
 def userinfo():
     if request.method == 'POST':
@@ -73,9 +75,9 @@ def userinfo():
                        (gender, username, email))
         conn.commit()
         conn.close()
-        return redirect(url_for('Ebg'))
+        return redirect(url_for('user_dashboard'))
 
     return render_template('userinfo.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
