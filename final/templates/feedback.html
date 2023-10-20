@@ -1,0 +1,89 @@
+<!-- templates/Userfeedback.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .feedback-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 800px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #777;
+        }
+
+        .faq-section {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <h2>Provide Your Feedback</h2>
+        <form method="post">
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            <br>
+            <input type="submit" value="Submit Feedback">
+        </form>
+
+        <h2>FAQ (Frequently Asked Questions)</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <p><strong>Q: What is this website for?</strong></p>
+                <p>A: This website is designed to...</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>Q: How can I contact support?</strong></p>
+                <p>A: You can contact our support team at...</p>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+
+        <div class="button-container">
+            <button class="button" id="dashboard-button">Dashboard</button>
+            <button class="button" id="logout-button">Logout</button>
+        </div>
+    </div>
+</body>
+</html>

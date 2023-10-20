@@ -1,0 +1,111 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .dashboard-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 800px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .user-profile {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .recommended-jobs {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .job-item {
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>User Profile</h2>
+        <div class="user-profile">
+            <!-- User Profile Data (Edit/View/Upload) -->
+            <!-- Replace the placeholders with actual user data -->
+            <p>User Name: <span id="user-name">John Doe</span></p>
+            <!-- Add more user profile fields as needed -->
+        </div>
+
+        <h2>Top 3 Recommended Jobs</h2>
+        <div class="recommended-jobs">
+            <div class="job-item">
+                <!-- Recommended Job 1 -->
+                <!-- Replace the placeholders with actual job data -->
+                <h3>Job Title 1</h3>
+                <p>Company: Company Name 1</p>
+                <p>Location: Location 1</p>
+                <!-- Add more job details as needed -->
+            </div>
+
+            <div class="job-item">
+                <!-- Recommended Job 2 -->
+                <!-- Replace the placeholders with actual job data -->
+                <h3>Job Title 2</h3>
+                <p>Company: Company Name 2</p>
+                <p>Location: Location 2</p>
+                <!-- Add more job details as needed -->
+            </div>
+
+            <div class="job-item">
+                <!-- Recommended Job 3 -->
+                <!-- Replace the placeholders with actual job data -->
+                <h3>Job Title 3</h3>
+                <p>Company: Company Name 3</p>
+                <p>Location: Location 3</p>
+                <!-- Add more job details as needed -->
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="button" id="profile-button">Profile</button>
+            <button class="button" id="feedback-button">Feedback</button>
+            <button class="button" id="logout-button">Logout</button>
+        </div>
+
+        <!-- Any additional necessary fields or content can be added here -->
+    </div>
+</body>
+</html>

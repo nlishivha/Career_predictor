@@ -1,0 +1,102 @@
+<!-- templates/User_experience.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Work Experience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .experience-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #777;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .add-experience {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .skip-link {
+            font-size: 14px;
+            color: #777;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="experience-container">
+        <h2>One more thing!!</h2>
+        <p>What's your relevant work experience?</p>
+        <form method="post">
+            <div class="experience-fields">
+                <label for="experience1">Experience:</label>
+                <input type="text" id="experience1" name="experience1" required>
+                <label for="duration1">Duration:</label>
+                <input type="text" id="duration1" name="duration1">
+            </div>
+            <div class="add-experience-container">
+                <button class="add-experience">Add Experience</button>
+            </div>
+            <br>
+            <input type="submit" value="Next">
+        </form>
+        <p class="skip-link">Skip</p>
+    </div>
+</body>
+</html>

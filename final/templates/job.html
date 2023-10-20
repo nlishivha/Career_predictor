@@ -1,0 +1,94 @@
+<!-- templates/JOB.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Dream Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .job-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #777;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .skip-link {
+            font-size: 14px;
+            color: #777;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="job-container">
+        <h2>What's your dream job!!</h2>
+        <p>Job preference</p>
+        <form method="post">
+            <label for="job_preference">Select job preference:</label>
+            <select id="job_preference" name="job_preference" multiple size="5">
+                <option value="Job 1">Job 1</option>
+                <option value="Job 2">Job 2</option>
+                <option value="Job 3">Job 3</option>
+                <option value="Job 4">Job 4</option>
+                <option value="Job 5">Job 5</option>
+                <option value="Job 6">Job 6</option>
+                <!-- Add more job options here -->
+            </select>
+            <br>
+            <input type="submit" value="Next">
+        </form>
+        <p class="skip-link">Skip</p>
+    </div>
+</body>
+</html>
