@@ -73,6 +73,9 @@ def userinfo():
         # Update the user's information in the database
         cursor.execute("UPDATE users SET gender = %s, username = %s WHERE email = %s",
                        (gender, username, email))
+        cursor.execute("SELECT userid FROM users WHERE email = %s;", (email,))
+        user_id = cursor.fetchone()
+        userid = session.get('userid')
         conn.commit()
         conn.close()
         return redirect(url_for('Ebg'))
@@ -81,10 +84,6 @@ def userinfo():
 
 @app.route("/Ebg", methods=['GET', 'POST'])
 def Ebg():
-    return render_template('Ebg.html')
-
-@app.route('/ebg', methods=['GET', 'POST'])
-def ebg():
     if request.method == 'POST':
         # Handle educational background form submission and insert into the database
         conn = connect_to_database()
@@ -95,16 +94,20 @@ def ebg():
         field = request.form['field']
         
         # Get the user's email from the session (you should have stored it during signup)
-        email = session.get('email')
+        userid = session.get('userid')
 
         # Insert the educational background data into the database
-        cursor.execute("INSERT INTO educationalbackground (email, level, qualification, field) VALUES (%s, %s, %s, %s)",
-                       (email, level, qualification, field))
+        cursor.execute("INSERT INTO educationalbackground (userid, level, qualification, field) VALUES (%s, %s, %s, %s)",
+                       (userid, level, qualification, field))
         conn.commit()
         conn.close()
-        return redirect(url_for('user_dashboard'))
+        return redirect(url_for('job'))
 
-    return render_template('ebg.html')
+    return render_template('Ebg.html')
+
+@app.route('/job')
+def job():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
