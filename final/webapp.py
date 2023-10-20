@@ -101,9 +101,39 @@ def Ebg():
                        (userid, level, qualification, field))
         conn.commit()
         conn.close()
-        return redirect(url_for('job'))
+        return redirect(url_for('skills'))
 
     return render_template('Ebg.html')
+
+@app.route('/skills', methods=['GET', 'POST'])
+def skills():
+    if request.method == 'POST':
+        conn = connect_to_database()
+        cursor = conn.cursor()
+
+        skills = request.form.getlist('skill_name')  # Assuming 'skills' is a multiselect field
+
+        # Insert the selected skills into the database
+        userid = session.get('userid')
+
+        for skill in skills:
+            cursor.execute("INSERT INTO user_skills (userid, skillname) VALUES (%s, %s)",
+                           (userid, skillname))
+        
+        conn.commit()
+        conn.close()
+        return redirect(url_for('job'))
+
+    # Fetch a list of available skills from the database to display in the form
+    conn = connect_to_database()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT skill_name FROM skills")
+    available_skills = cursor.fetchall()
+    conn.close()
+
+    return render_template('skills.html', available_skills=available_skills)
+
 
 @app.route('/job')
 def job():

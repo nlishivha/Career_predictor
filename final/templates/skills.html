@@ -77,14 +77,9 @@
         <form method="post">
             <label for="skills">Select skills:</label>
             <select id="skills" name="skills" multiple>
-                <option value="Skill 1">Skill 1</option>
-                <option value="Skill 2">Skill 2</option>
-                <option value="Skill 3">Skill 3</option>
-                <option value="Skill 4">Skill 4</option>
-                <option value="Skill 4">Skill 5</option>
-                <option value="Skill 4">Skill 4</option>
-                <option value="Skill 4">Skill 4</option>
-                <!-- Add more skill options here -->
+                {% for skill in available_skills %}
+                    <option value="{{ skill[0] }}">{{ skill[0] }}</option>
+                {% endfor %}
             </select>
             <br>
             <input type="submit" value="Submit">
