@@ -52,7 +52,7 @@ def signup():
             conn.commit()
             conn.close()
             # Redirect to a valid route, e.g., 'userinfo'
-            session['email'] = email  
+            session['email'] = email 
             return redirect(url_for('userinfo'))
 
     return render_template('signup.html')
@@ -73,13 +73,12 @@ def userinfo():
         # Update the user's information in the database
         cursor.execute("UPDATE users SET gender = %s, username = %s WHERE email = %s",
                        (gender, username, email))
-        cursor.execute("SELECT userid FROM users WHERE email = %s;", (email,))
+        cursor.execute("SELECT userid FROM users WHERE email = %s", (email,))
         user_id = cursor.fetchone()
-        userid = session.get('userid')
+        session['userid'] = user_id[0]
         conn.commit()
         conn.close()
         return redirect(url_for('Ebg'))
-
     return render_template('userinfo.html')
 
 @app.route("/Ebg", methods=['GET', 'POST'])
@@ -106,18 +105,25 @@ def Ebg():
     return render_template('Ebg.html')
 
 
-@app.route('/job', meth)
+@app.route('/job', methods=['GET', 'POST'])
 def job():
-    
+    if request.method == ('POST'):
+        conn = connect_to_database()
+        cursor = conn.cursor()
+        
+
     return render_template('job.html')
 
 @app.route('/skills', methods=['GET', 'POST'])
 def skills():
     if request.method == 'POST':
+
+        #Database connection
         conn = connect_to_database()
         cursor = conn.cursor()
 
-        skills = request.form.getlist('skill_name')  # Assuming 'skills' is a multiselect field
+        #Pushing skill from database to webpage
+        skills = request.form.getlist('skill_name') 
 
         # Insert the selected skills into the database
         userid = session.get('userid')
