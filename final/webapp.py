@@ -101,9 +101,15 @@ def Ebg():
                        (userid, level, qualification, field))
         conn.commit()
         conn.close()
-        return redirect(url_for('skills'))
+        return redirect(url_for('job'))
 
     return render_template('Ebg.html')
+
+
+@app.route('/job')
+def job():
+    
+    return render_template('job.html')
 
 @app.route('/skills', methods=['GET', 'POST'])
 def skills():
@@ -135,9 +141,6 @@ def skills():
     return render_template('skills.html', available_skills=available_skills)
 
 
-@app.route('/job')
-def job():
-    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
