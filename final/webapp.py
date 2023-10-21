@@ -197,6 +197,8 @@ def user_experience():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+
+    
     return render_template('dashboard.html')
 
 
