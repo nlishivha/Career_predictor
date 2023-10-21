@@ -1,111 +1,91 @@
-<!-- templates/dashboard.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
     <style>
         body {
+            background-color: #f0f8ff; /* Light Blue Background */
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
-
-        .dashboard-container {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        .dashboard {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
-            width: 800px;
-            text-align: center;
+            background-color: #fff; /* White Background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-
+        h1 {
+            color: #00bfff; /* Deep Sky Blue Text */
+        }
         h2 {
+            color: #0074e4; /* Blue Text */
+        }
+        p {
             color: #333;
         }
-
-        .user-profile {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 5px;
+        .user-info {
+            margin-top: 20px;
+            text-align: center;
         }
-
-        .recommended-jobs {
-            text-align: left;
-            margin: 20px 0;
+        .recommendations {
+            margin-top: 20px;
         }
-
-        .job-item {
-            margin-bottom: 10px;
+        .skills {
+            margin-top: 20px;
         }
-
         .button-container {
-            display: flex;
-            justify-content: space-between;
+            text-align: center;
+            margin-top: 20px;
         }
-
         .button {
-            background-color: #007BFF;
-            color: #fff;
             padding: 10px 20px;
+            background-color: #0074e4; /* Blue Button */
+            color: #fff; /* White Text */
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
+            margin: 0 10px;
+        }
+        .button:hover {
+            background-color: #0050a0; /* Darker Blue on Hover */
         }
     </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <h2>User Profile</h2>
-        <div class="user-profile">
-            <!-- User Profile Data (Edit/View/Upload) -->
-            <!-- Replace the placeholders with actual user data -->
-            <p>User Name: <span id="user-name">John Doe</span></p>
-            <!-- Add more user profile fields as needed -->
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+
+        <!-- User Info -->
+        <div class="user-info">
+            <p>Welcome, <strong>{{ user.username }}</strong></p>
         </div>
 
-        <h2>Top 3 Recommended Jobs</h2>
-        <div class="recommended-jobs">
-            <div class="job-item">
-                <!-- Recommended Job 1 -->
-                <!-- Replace the placeholders with actual job data -->
-                <h3>Job Title 1</h3>
-                <p>Company: Company Name 1</p>
-                <p>Location: Location 1</p>
-                <!-- Add more job details as needed -->
-            </div>
-
-            <div class="job-item">
-                <!-- Recommended Job 2 -->
-                <!-- Replace the placeholders with actual job data -->
-                <h3>Job Title 2</h3>
-                <p>Company: Company Name 2</p>
-                <p>Location: Location 2</p>
-                <!-- Add more job details as needed -->
-            </div>
-
-            <div class="job-item">
-                <!-- Recommended Job 3 -->
-                <!-- Replace the placeholders with actual job data -->
-                <h3>Job Title 3</h3>
-                <p>Company: Company Name 3</p>
-                <p>Location: Location 3</p>
-                <!-- Add more job details as needed -->
-            </div>
+        <!-- Job Recommendations -->
+        <div class="recommendations">
+            <h2>Job Recommendations</h2>
+            <ul>
+                {% for recommendation in user.job_recommendations %}
+                    <li>{{ recommendation }}</li>
+                {% endfor %}
+            </ul>
         </div>
 
+        <!-- User Skills -->
+        <div class="skills">
+            <h2>Your Skills</h2>
+            <ul>
+                {% for skill in user.skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Button Container -->
         <div class="button-container">
-            <button class="button" id="profile-button">Profile</button>
-            <button class="button" id="feedback-button">Feedback</button>
-            <button class="button" id="logout-button">Logout</button>
+            <button class="button">Feedback</button>
+            <button class="button">Logout</button>
+            <button class="button">User Profile</button>
         </div>
-
-        <!-- Any additional necessary fields or content can be added here -->
     </div>
 </body>
 </html>

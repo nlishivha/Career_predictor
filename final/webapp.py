@@ -107,12 +107,34 @@ def Ebg():
 
 @app.route('/job', methods=['GET', 'POST'])
 def job():
-    if request.method == ('POST'):
+    if request.method == 'POST':
         conn = connect_to_database()
         cursor = conn.cursor()
-        
 
-    return render_template('job.html')
+        # Pushing job preferences from the webpage
+        jobpreferences = request.form.getlist('job_name')
+
+        # Insert the selected job preferences into the database
+        userid = session.get('userid')
+
+        for jobpreference in jobpreferences:
+            cursor.execute("INSERT INTO userjobpreferences (userid, jobpreferencename) VALUES (%s, %s)",
+                           (userid, jobpreference))
+
+        conn.commit()
+        conn.close()
+        return redirect(url_for('skills'))  # You can change this to the appropriate URL
+
+    # Fetch a list of available job preferences from the database to display in the form
+    conn = connect_to_database()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT job_name FROM jobpositions")
+    available_jobpreferences = cursor.fetchall()
+    conn.close()
+
+    return render_template('job.html', available_jobpreferences=available_jobpreferences)  # Pass available_jobpreferences to the template
+
 
 @app.route('/skills', methods=['GET', 'POST'])
 def skills():
@@ -134,7 +156,7 @@ def skills():
         
         conn.commit()
         conn.close()
-        return redirect(url_for('job'))
+        return redirect(url_for('user_experience'))
 
     # Fetch a list of available skills from the database to display in the form
     conn = connect_to_database()
@@ -146,6 +168,36 @@ def skills():
 
     return render_template('skills.html', available_skills=available_skills)
 
+
+@app.route('/user_experience', methods=['GET', 'POST'])
+def user_experience():
+    if request.method == 'POST':
+        # Process the submitted form data
+        experiences = request.form.getlist('experience')
+        durations = request.form.getlist('duration')
+
+        # Assuming you have user ID stored in the session
+        userid = session.get('userid')
+
+        conn = connect_to_database()
+        cursor = conn.cursor()
+
+        for experience, duration in zip(experiences, durations):
+            # Insert the experience and duration into the database
+            cursor.execute("INSERT INTO userexperience (userid, fieldname, experience) VALUES (%s, %s, %s)",
+                           (userid, duration, experience))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('dashboard'))  # Replace 'next_page' with the actual URL
+
+    return render_template('Userexperience.html')
+
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
 
 
 if __name__ == '__main__':
