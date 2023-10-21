@@ -106,7 +106,7 @@ def Ebg():
     return render_template('Ebg.html')
 
 
-@app.route('/job')
+@app.route('/job', meth)
 def job():
     
     return render_template('job.html')
