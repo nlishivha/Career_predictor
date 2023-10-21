@@ -75,18 +75,14 @@
         <h2>What's your dream job!!</h2>
         <p>Job preference</p>
         <form method="post">
-            <label for="job_preference">Select job preference:</label>
-            <select id="job_preference" name="job_preference" multiple size="5">
-                <option value="Job 1">Job 1</option>
-                <option value="Job 2">Job 2</option>
-                <option value="Job 3">Job 3</option>
-                <option value="Job 4">Job 4</option>
-                <option value="Job 5">Job 5</option>
-                <option value="Job 6">Job 6</option>
-                <!-- Add more job options here -->
+            <label for="jobpreference">jobpreferences:</label>
+            <select id="jobpreference" name="jobpreference" multiple>
+                {% for skill in available_skills %}
+                    <option value="{{ jobpreference }}">{{ skill[0] }}</option>
+                {% endfor %}
             </select>
             <br>
-            <input type="submit" value="Next">
+            <input type="submit" value="Submit">
         </form>
         <p class="skip-link">Skip</p>
     </div>
