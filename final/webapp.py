@@ -4,11 +4,11 @@ import psycopg2
 app = Flask(__name__, template_folder="templates")
 
 # Database configuration
-DB_HOST = "intern2301-06-bridging-career-gaps-a.ctgb19tevqci.eu-west-1.rds.amazonaws.com"
-DB_PORT = 5432
-DB_DATABASE = "postgres"
-DB_USER = "postgres"
-DB_PASSWORD = "BestTeam420"
+DB_HOST = ""
+DB_PORT = 
+DB_DATABASE = ""
+DB_USER = ""
+DB_PASSWORD = ""
 
 # Set up a secret key for Flask (replace with a strong, random key)
 app.secret_key = 'your_secret_key'
